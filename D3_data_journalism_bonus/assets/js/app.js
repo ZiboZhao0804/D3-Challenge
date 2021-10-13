@@ -13,8 +13,8 @@ function makeResponsive() {
 
   // SVG wrapper dimensions are determined by the current width and
   // height of the browser window.
-  var svgWidth = window.innerWidth;
-  var svgHeight = window.innerHeight;
+  var svgWidth = window.innerWidth/1.7;
+  var svgHeight = window.innerHeight/1.2;
 
   var margin = {
     top: 20,
@@ -101,7 +101,7 @@ function updateToolTip(circlesGroup,circlestextGroup){
   var Ylabel;
 
   if (chosenXAxis === "poverty") {
-    Xlabel = "Poverty";
+    Xlabel = "Poverty (%)";
   }
   else if (chosenXAxis == "age") {
     Xlabel = "Age";
@@ -111,13 +111,13 @@ function updateToolTip(circlesGroup,circlestextGroup){
   }
 
   if (chosenYAxis === "healthcare") {
-    Ylabel = "Healthcare (%): ";
+    Ylabel = "Healthcare (%)";
   }
   else if (chosenYAxis == "smokes") {
-    Ylabel = "Smokers:";
+    Ylabel = "Smokers (%)";
   }
   else {
-    Ylabel = "Obesity (%):";
+    Ylabel = "Obesity (%)";
   }
 
   var toolTip = d3.tip()
@@ -130,14 +130,6 @@ function updateToolTip(circlesGroup,circlestextGroup){
   circlesGroup.call(toolTip);
 
   circlesGroup
-    .on("mouseover",function(d){
-      toolTip.show(d,this);
-    })
-    .on("mouseout",function(d){
-      toolTip.hide(d);
-    });
-
-  circlestextGroup
     .on("mouseover",function(d){
       toolTip.show(d,this);
     })
@@ -196,7 +188,7 @@ d3.csv("assets/data/data.csv").then(function(stateData,err) {
         .append("text")
         .text(d => d.abbr)
         .attr("x", d => xLinearScale(d[chosenXAxis]))
-        .attr("y", d => yLinearScale(d[chosenYAxis]+5))
+        .attr("y", d => yLinearScale(d[chosenYAxis]))
         .classed("stateText", true);
 
    // updateToolTip function upon csv import
