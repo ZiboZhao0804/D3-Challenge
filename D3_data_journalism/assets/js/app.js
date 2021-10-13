@@ -75,10 +75,8 @@ d3.csv("assets/data/data.csv").then(function(stateData) {
     // ==============================
     var toolTip = d3.tip()
         .attr("class", "d3-tip")
-        .offset([8, -6])
         .html(function(d) {
-          return (`<strong>${d.state}<strong><hr>${d.poverty}<strong><hr>${d.healthcare}
-          number hits`);
+          return (`${d.state}<hr>poverty: ${d.poverty}%<hr>healthcare: ${d.healthcare}%`);
         });
     // Step 7: Create tooltip in the chart
     // ==============================
