@@ -74,6 +74,7 @@ d3.csv("assets/data/data.csv").then(function(stateData) {
     // ==============================
     var toolTip = d3.tip()
         .attr("class", "d3-tip")
+        .offset([80,-60])
         .html(function(d) {
           return (`${d.state}<hr>poverty: ${d.poverty}%<hr>healthcare: ${d.healthcare}%`);
         });
