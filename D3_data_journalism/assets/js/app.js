@@ -59,7 +59,6 @@ d3.csv("assets/data/data.csv").then(function(stateData) {
       .attr("cx",d => xScale(d.poverty))
       .attr("cy",d => yScale(d.healthcare))
       .attr("r","15")
-      .attr("opacity",".5")
       .classed("stateCircle",true);
 
     var circlesText = chartGroup.append("g").selectAll("text")
